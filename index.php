@@ -2,16 +2,16 @@
 
 //kollar hur många rader det är
 
-  function SumOfLines(){
+function SumOfLines(){
 
 $file = "source.php";
 $lineCount = 0;
 $handle = fopen($file, "r");
-while(!feof($handle))
-{
-  $line = fgets($handle);
-  $lineCount++;
-}
+  while(!feof($handle))
+  {
+    $line = fgets($handle);
+    $lineCount++;
+  }
 fclose($handle);
 echo "<p> $lineCount; </p>";
   
