@@ -1,34 +1,35 @@
 <?php
-//källkodsfilen
-$sourceFile = file_get_contents("source.php") or die ("failed");
 
-//ger karaktärer istället för bokstäver (inga space inkluderade)
+//kollar hur många rader det är
 
-$sourceToString = htmlspecialchars($sourceFile);
+  function SumOfLines(){
 
-$longestCode = 0;
-$lengthOfCode = 0;
+$file = "source.php";
+$lineCount = 0;
+$handle = fopen($file, "r");
+while(!feof($handle))
+{
+  $line = fgets($handle);
+  $lineCount++;
+}
+fclose($handle);
+echo "<p> $lineCount; </p>";
+  
+}
+echo "Antal rader "; SumOfLines();
 
-//loopar igenom koden
-for($i = 0; $i < strlen($sourceToString); $i++){    
+//försöker få ut längsta raden, atm får ut längsta ordet
 
-  //längden på koden
-  $lengthOfCode += 1;    
-  //gör en radbrytning
-  if($sourceToString[$i] == "\n"){    
-    
-    //för att få ut alla karaktärer i källkoden
-    if($longestCode < $lengthOfCode){            
-      $longestCode = $lengthOfCode;        
-    }      
-    //längden börjar på noll  
-    $lengthOfCode = 0;    
+$string = "Hej jag heter Tobias";
+$words = explode(' ', $string);
+$longestWordLength = 0;
+$longestWord = '';
+
+foreach ($words as $word) {
+  if(strlen($word) > $longestWordLength);
+  {
+    $longestWordLength = strlen($word);
+    $longestWord = $word;
   }
 }
-echo "<html>
-<body>    
-//alla bokstäver 
-$longestCode
-$sourceToString
-</body>
-</html>";
+echo "<p>$longestWord</p>";
